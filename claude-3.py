@@ -8,12 +8,16 @@ import httpx
 from anthropic import Anthropic
 from typing_extensions import Literal
 
+#store the API key in .txt file
 api_key = open("your-api-key/anthropic.txt").read()
 client = Anthropic(api_key=api_key)
 
 #For chat completion
 def chat_completion(question: str,
-                    model: Literal['claude-3-haiku-20240307', 'claude-3-sonnet-20240229', 'claude-3-opus-20240229'] = None):
+                    model: Literal[
+                    'claude-3-haiku-20240307',
+                    'claude-3-sonnet-20240229',
+                    'claude-3-opus-20240229'] = None):
     '''
     Fortunately, system prompt is set straight as the parameter, not in the `message`.
     '''
@@ -32,7 +36,10 @@ def chat_completion(question: str,
 #For vision capabilities
 def vision(question: str,
            image_url: str,
-           model: Literal['claude-3-haiku-20240307', 'claude-3-sonnet-20240229', 'claude-3-opus-20240229'] = None):
+           model: Literal[
+           'claude-3-haiku-20240307',
+           'claude-3-sonnet-20240229', 
+           'claude-3-opus-20240229'] = None):
   
     image_url = image_url #example: https://upload.wikimedia.org/wikipedia/commons/a/a7/Camponotus_flavomarginatus_ant.jpg
     image_media_type = "image/jpeg"
